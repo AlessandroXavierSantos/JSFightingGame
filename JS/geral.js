@@ -64,6 +64,7 @@ const enemy = new Sprite({
     }
 })
 
+console.log(player)
 /*CHAMAMOS O METODO draw DENTRO DA FUNÇÃO animate(), ONDE O METODO draw ESTÁ DENTRO DO METODO UPTADE*/
 //FUNÇÃO PARA A ANIMAÇÃO
 function animate(){
@@ -76,3 +77,11 @@ function animate(){
 //CHAMANDO A FUNÇÃO animate()
 animate()
 
+window.addEventListener('keydow', (event)=> {
+    switch(event.key){
+        case 'd':
+            player.velocity.x = 1
+        break; 
+    }
+    console.log(event.key);
+})
