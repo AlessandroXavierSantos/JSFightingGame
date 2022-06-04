@@ -19,20 +19,21 @@ class Sprite{
         this.velocity = velocity
         this.height = 150
     }
+
     draw(){
        c.fillStyle = 'red'//COR DO PLAYER 
        c.fillRect(this.position.x, this.position.y, 50, this.height)//SETANDO A POSIÇÃO ONDE O PLAYER ESTÁ LOCALIZADO 
     }
+
     uptade(){
         this.draw()
+        this.position.x += this.velocity.x
         this.position.y += this.velocity.y
         //TOMADA DE DECISÃO ONDE QUANDO A SOMA DA POSIÇÃO DO PERSONAGEM + O TAMANHO  + A VELOCIDADE
         //FOR MAIOR OU IGUAL AO TAMANHO TOTAL DO CANVAS ELE PARA DE CAIR, OU SEJA, ELE PARA NO BOTTOM DO CANVAS
         if(this.position.y + this.height + this.velocity.y >= canvas.height){
             this.velocity.y = 0
-        }else{
-            this.velocity.y += gravity
-        }
+        } else this.velocity.y += gravity   
     }
 }
 
