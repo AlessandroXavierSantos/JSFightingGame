@@ -74,11 +74,30 @@ function animate(){
 //CHAMANDO A FUNÇÃO animate()
 animate()
 
-window.addEventListener('keydow', (event)=> {
+window.addEventListener('keydown', (event)=> {
     switch(event.key){
         case 'd':
-            player.velocity.x = 1
+            player.velocity.x = 2
         break; 
+
+        case 'a':
+            player.velocity.x = -2
+        break;
+
+    }
+    console.log(event.key);
+})
+
+window.addEventListener('keyup', (event)=> {
+    switch(event.key){
+        case 'd':
+            player.velocity.x = 0
+        break; 
+
+        case 'a':
+            player.velocity.x = 0
+        break;
+
     }
     console.log(event.key);
 })

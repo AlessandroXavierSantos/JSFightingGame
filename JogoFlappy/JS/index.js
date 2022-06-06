@@ -103,15 +103,52 @@ const telaInicio = {
     }
 }
 
+let telaAtiva = {};
+function mudarTela(novaTela){
+    telaAtiva = novaTela;
+}
+
+const telas = {
+    inicio: {
+        desenha(){
+            planoDeFundo.desenha();
+            chao.desenha();
+            flappy.desenha();
+            telaInicio.desenha();
+        },
+        click(){
+            mudarTela(telas.jogo);
+        },
+        atualiza(){
+            
+        }
+    }
+}
+
+telas.jogo = {
+    desenha(){
+        planoDeFundo.desenha();
+        chao.desenha();
+        flappy.desenha();
+    },
+    atualiza(){
+        flappy.atualiza();
+    }
+};
 
 //*?Função para ficar reecriando o flappy, famoso FPS
 function loop(){
-    flappy.atualiza();
-    planoDeFundo.desenha();
-    chao.desenha();
-    flappy.desenha();
-    telaInicio.desenha();
+    telaAtiva.desenha();
+    telaAtiva.atualiza();
     requestAnimationFrame(loop);
 }
+
+window.addEventListener('click', function(){
+    if(telaAtiva.click){
+        telaAtiva.click();
+    }
+})
+
 //*Chamando a função loop()
+mudarTela(telas.inicio);
 loop();
